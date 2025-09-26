@@ -9,6 +9,12 @@ html, body {
 }
 
 /* ==== LAYOUT ==== */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 main {
     font-family: 'Inria Serif', serif;
     font-weight: bold;
@@ -21,7 +27,7 @@ main {
   margin: 0;
   padding: 0 20px;
   padding-top: 100px;
-  border-right: 162px solid #F6B9C4; /* updated border width */
+  border-right: 32px solid #F6B9C4;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -41,7 +47,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 48px; /* wider gap between logo and center header */
+  gap: 48px;
 }
 
 /* ==== NAVIGATION ==== */
@@ -50,17 +56,17 @@ nav {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 40px; /* wider gap between nav buttons */
+  gap: 40px;
   margin: 14px 0;
 }
 
 .nav-home {
-    margin-right: 50px;
+    margin-right: 20px;
 }
 
 nav a {
   font-family: 'Inder', Arial, sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   color: #000;
   text-decoration: none;
   transition: color 0.2s;
@@ -84,27 +90,28 @@ nav a:hover {
 }
 
 .dior-img {
-  max-width: 200px;
-  height: auto;
-  margin: 0 auto 6px auto;
   display: block;
+  max-width: 200px;
+  margin: 0 auto 6px auto;
+}
+
+.diorlogo {
+  width: 80px;
+  margin-bottom: -80px;
 }
 
 /* ==== PRODUCTS ==== */
 .lips-products-row {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 24px 0;
+  justify-items: center;
 }
 
 .product-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 260px;
+  width: 100%;
+  max-width: none;
+  font-size: 0.7rem;
   text-align: center;
 }
 
@@ -116,6 +123,7 @@ nav a:hover {
   border-radius: 8px;
   box-shadow: 0 2px 8px #F6B9C4;
   margin-bottom: 8px;
+  font-size: 0.7rem;
 }
 
 .lips-description-title {
@@ -128,41 +136,55 @@ nav a:hover {
 }
 
 footer {
+  flex-shrink: 0;
   text-align: center;
-  width: 100vw;
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+  position: relative;
+  background: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: none;
-  padding: 0;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  z-index: 10;
+  margin: 0;
+  font-weight: normal;
 }
 
 .footer-art {
+  min-width: 100vw;
   width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   background-image: url('img/footer_img.jpg');
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: center bottom;
   min-height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .footer-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
   color: #000;
   font-size: 0.95rem;
   font-family: 'Inder', Arial, sans-serif;
+  font-weight: normal;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
   z-index: 2;
   text-shadow: 0 2px 8px #fff, 0 0 2px #fff;
-  pointer-events: none;
 }
 
 .dior_footer {
@@ -172,8 +194,9 @@ footer {
 /* ==== RESPONSIVE ==== */
 @media screen and (max-width: 900px) {
   .container {
-    border-right: 14px solid #F6B9C4; /* fallback for mobile */
+    border-right: 162px solid #F6B9C4;
   }
+  
   .header-row {
     gap: 24px;
   }
@@ -192,10 +215,32 @@ footer {
   }
 }
 
+@media screen and (min-width: 630px) {
+  .container {
+    border-right: 162px solid #F6B9C4;
+    padding-bottom: 100px;
+    width: 100vw;
+  }
+}
+
 @media screen and (max-width: 629px) {
+    .diorlogo {
+    width: 60px;
+    margin-bottom: -70px;
+  }
+  .lips-products-row {
+    gap: 12px;
+  }
+
+  .dior-img {
+    width: 120px;
+  }
+
   .container {
     padding-top: 28px;
     border-right: 14px solid #F6B9C4;
+    padding-top: 100px;
+
   }
   .header-row {
     gap: 16px;
